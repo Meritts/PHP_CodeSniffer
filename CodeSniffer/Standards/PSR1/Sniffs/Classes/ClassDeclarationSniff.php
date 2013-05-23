@@ -66,7 +66,9 @@ class PSR1_Sniffs_Classes_ClassDeclarationSniff implements PHP_CodeSniffer_Sniff
             $namespace = $phpcsFile->findPrevious(T_NAMESPACE, ($stackPtr - 1));
             if ($namespace === false) {
                 $error = 'Each class must be in a namespace of at least one level (a top-level vendor name)';
-                $phpcsFile->addError($error, $stackPtr, 'MissingNamespace');
+
+                // Meritt: This is a temporary solution, since we don' use namespaces due to Kohana
+                //$phpcsFile->addError($error, $stackPtr, 'MissingNamespace');
             }
         }
 

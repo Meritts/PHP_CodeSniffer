@@ -83,7 +83,11 @@ class Squiz_Sniffs_Classes_ValidClassNameSniff implements PHP_CodeSniffer_Sniff
                       $type,
                       $name,
                      );
-            $phpcsFile->addError($error, $stackPtr, 'NotCamelCaps', $data);
+
+            // Meritt: This is a workaround since we work with classes with underscores, using the Kohana's convention
+            if($type != 'Class') {
+                $phpcsFile->addError($error, $stackPtr, 'NotCamelCaps', $data);
+            }
         }
 
     }//end process()
